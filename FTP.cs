@@ -412,7 +412,7 @@ namespace FTPFileUpload
 
             foreach (System.IO.DirectoryInfo info in di.GetDirectories())
             {
-                directories.Add(info.Name + "|" + info.CreationTime + "|" + info.Extension);
+                directories.Add(info.Name + "|" + info.CreationTime + "|" + "폴더");
             }
 
             foreach (System.IO.FileInfo info in di.GetFiles())
@@ -482,7 +482,7 @@ namespace FTPFileUpload
                         case "드라이브":
                             ext = "드라이브";
                             break;
-                        case "":
+                        case "폴더":
                             ext = "폴더";
                             break;
                         default:
