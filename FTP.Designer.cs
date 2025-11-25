@@ -136,7 +136,7 @@
             lv_local.TabIndex = 11;
             lv_local.UseCompatibleStateImageBehavior = false;
             lv_local.View = View.Details;
-            lv_local.Click += lv_local_Click;
+            lv_local.ItemSelectionChanged += lv_local_ItemSelectionChanged;
             lv_local.DoubleClick += lv_local_DoubleClick;
             // 
             // columnHeader1
@@ -156,13 +156,15 @@
             // 
             // ftp_port
             // 
+            ftp_port.Dock = DockStyle.Fill;
             ftp_port.Location = new Point(496, 3);
             ftp_port.Name = "ftp_port";
-            ftp_port.Size = new Size(272, 39);
+            ftp_port.Size = new Size(273, 39);
             ftp_port.TabIndex = 5;
             // 
             // label1
             // 
+            label1.Dock = DockStyle.Fill;
             label1.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             label1.Location = new Point(3, 3);
             label1.Name = "label1";
@@ -173,6 +175,7 @@
             // 
             // label2
             // 
+            label2.Dock = DockStyle.Fill;
             label2.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             label2.Location = new Point(389, 3);
             label2.Name = "label2";
@@ -183,6 +186,7 @@
             // 
             // label4
             // 
+            label4.Dock = DockStyle.Fill;
             label4.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             label4.Location = new Point(389, 48);
             label4.Name = "label4";
@@ -193,37 +197,42 @@
             // 
             // ftp_addr
             // 
+            ftp_addr.Dock = DockStyle.Fill;
             ftp_addr.Location = new Point(110, 3);
             ftp_addr.Name = "ftp_addr";
-            ftp_addr.Size = new Size(272, 39);
+            ftp_addr.Size = new Size(273, 39);
             ftp_addr.TabIndex = 4;
             // 
             // ftp_id
             // 
+            ftp_id.Dock = DockStyle.Fill;
             ftp_id.Location = new Point(110, 48);
             ftp_id.Name = "ftp_id";
-            ftp_id.Size = new Size(272, 39);
+            ftp_id.Size = new Size(273, 39);
             ftp_id.TabIndex = 6;
             // 
             // ftp_password
             // 
+            ftp_password.Dock = DockStyle.Fill;
             ftp_password.Location = new Point(496, 48);
             ftp_password.Name = "ftp_password";
-            ftp_password.Size = new Size(272, 39);
+            ftp_password.Size = new Size(273, 39);
             ftp_password.TabIndex = 7;
             // 
             // btn_connect
             // 
+            btn_connect.Dock = DockStyle.Fill;
             btn_connect.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             btn_connect.Location = new Point(775, 3);
             btn_connect.Name = "btn_connect";
-            btn_connect.Size = new Size(124, 39);
+            btn_connect.Size = new Size(126, 39);
             btn_connect.TabIndex = 8;
             btn_connect.Text = "연결";
             btn_connect.Click += btn_connect_Click;
             // 
             // label3
             // 
+            label3.Dock = DockStyle.Fill;
             label3.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             label3.Location = new Point(3, 48);
             label3.Name = "label3";
@@ -234,6 +243,7 @@
             // 
             // ftp_remember
             // 
+            ftp_remember.Dock = DockStyle.Fill;
             ftp_remember.Font = new Font("맑은 고딕", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 129);
             ftp_remember.Location = new Point(802, 48);
             ftp_remember.Margin = new Padding(30, 3, 3, 3);
@@ -245,10 +255,11 @@
             // divider1
             // 
             tableLayoutPanel1.SetColumnSpan(divider1, 5);
+            divider1.Dock = DockStyle.Fill;
             divider1.Location = new Point(3, 93);
             divider1.Name = "divider1";
             divider1.Orientation = AntdUI.TOrientation.Right;
-            divider1.Size = new Size(894, 4);
+            divider1.Size = new Size(898, 4);
             divider1.TabIndex = 10;
             divider1.Text = "";
             // 
@@ -290,7 +301,7 @@
             lv_ftp.TabIndex = 11;
             lv_ftp.UseCompatibleStateImageBehavior = false;
             lv_ftp.View = View.Details;
-            lv_ftp.Click += lv_ftp_Click;
+            lv_ftp.ItemSelectionChanged += lv_ftp_ItemSelectionChanged;
             lv_ftp.DoubleClick += lv_ftp_DoubleClick;
             // 
             // header_name
@@ -340,6 +351,7 @@
             tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel5.Controls.Add(btn_upload, 0, 1);
             tableLayoutPanel5.Controls.Add(btn_download, 0, 2);
+            tableLayoutPanel5.Dock = DockStyle.Fill;
             tableLayoutPanel5.Location = new Point(389, 103);
             tableLayoutPanel5.Name = "tableLayoutPanel5";
             tableLayoutPanel5.RowCount = 4;
@@ -352,6 +364,8 @@
             // 
             // btn_upload
             // 
+            btn_upload.Dock = DockStyle.Fill;
+            btn_upload.Enabled = false;
             btn_upload.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             btn_upload.Icon = Properties.Resources.step_forward;
             btn_upload.IconSize = new Size(20, 20);
@@ -364,6 +378,8 @@
             // 
             // btn_download
             // 
+            btn_download.Dock = DockStyle.Fill;
+            btn_download.Enabled = false;
             btn_download.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             btn_download.Icon = Properties.Resources.step_back;
             btn_download.IconSize = new Size(20, 20);

@@ -50,6 +50,7 @@ namespace FTPFileUpload
         }
 
         #region FTP Connection
+
         /// <summary>
         /// FTP 서버 연결
         /// </summary>
@@ -91,6 +92,7 @@ namespace FTPFileUpload
             }
 
         }
+
         /// <summary>
         /// FTP 서버 디렉토리 가져오기
         /// </summary>
@@ -125,6 +127,7 @@ namespace FTPFileUpload
 
             return true;
         }
+
         /// <summary>
         /// FTP 서버 디렉토리 리스트뷰로 출력
         /// </summary>
@@ -210,6 +213,7 @@ namespace FTPFileUpload
             }
 
         }
+
         /// <summary>
         /// 하위 디렉토리 이동
         /// </summary>
@@ -245,14 +249,16 @@ namespace FTPFileUpload
             bool bRtn = ShowFTPDirectory(ftpRequest);
 
         }
+
         /// <summary>
-        /// 디렉토리 주소 받아오기
+        /// 디렉토리 주소 받아오기 및 다운로드 버튼 활성화
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void lv_ftp_Click(object sender, EventArgs e)
+        private void lv_ftp_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
-            int selectRow = lv_ftp.SelectedItems[0].Index;
+            //int selectRow = lv_ftp.SelectedItems[0].Index;
+            int selectRow = e.Item.Index;
 
             string URL = "";
 
@@ -268,17 +274,24 @@ namespace FTPFileUpload
 
             ftp_path.Text = URL;
 
-            // 선택된 list가 폴더가 아닐 경우, 다운로드 버튼 활성화
-            if (lv_ftp.Items[selectRow].SubItems[2].Text != "폴더")
+            if (e.IsSelected)
             {
-                //btn_download.Enabled = true;
+                // 선택된 list가 폴더가 아닐 경우, 다운로드 버튼 활성화
+                if (lv_ftp.Items[selectRow].SubItems[2].Text != "폴더")
+                {
+                    btn_download.Enabled = true;
+                }
+                else
+                {
+                    btn_download.Enabled = false;
+                }
             }
             else
             {
-                //btn_download.Enabled = false;
+                btn_download.Enabled = false;
             }
-
         }
+
         /// <summary>
         /// 파일 FTP > Local 로 다운로드
         /// </summary>
@@ -288,6 +301,13 @@ namespace FTPFileUpload
         {
             try
             {
+                if (lv_ftp.SelectedItems.Count == 0)
+                {
+                    LogHelper.Write("다운로드 할 파일을 선택해주세요.");
+
+                    return;
+                }
+
                 LogHelper.Write($"경로 {this.CurrentLocalURL}에 파일 다운로드 중 ...");
 
                 int selectRow = lv_ftp.SelectedItems[0].Index;
@@ -355,9 +375,11 @@ namespace FTPFileUpload
                 LogHelper.ExceptionWrite(ex);
             }
         }
+
         #endregion
 
         #region Local Connection
+
         /// <summary>
         /// Local 서버 디렉토리 가져오기
         /// </summary>
@@ -416,6 +438,7 @@ namespace FTPFileUpload
 
             return true;
         }
+
         /// <summary>
         /// Local 서버 디렉토리 리스트뷰로 출력
         /// </summary>
@@ -481,6 +504,7 @@ namespace FTPFileUpload
                 LogHelper.ExceptionWrite(ex);
             }
         }
+
         /// <summary>
         /// 하위 디렉토리로 이동
         /// </summary>
@@ -526,14 +550,15 @@ namespace FTPFileUpload
                 //lst_log.Items.Add(UtilityHelper.GetNowDate() + "\t 권한이 없습니다.");
             }
         }
+
         /// <summary>
-        /// 디렉토리 주소 받아오기
+        /// 디렉토리 주소 받아오기 및 다운로드 버튼 활성화
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void lv_local_Click(object sender, EventArgs e)
+        private void lv_local_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
-            int selectRow = lv_local.SelectedItems[0].Index;
+            int selectRow = e.Item.Index;
 
             string URL = "";
 
@@ -549,16 +574,26 @@ namespace FTPFileUpload
 
             local_path.Text = URL;
 
-            // 선택된 list가 폴더가 아닐 경우, 다운로드 버튼 활성화
-            //if (lv_local.Items[selectRow].SubItems[2].Text != "폴더")
-            //{
-            //    btn_download.Enabled = true;
-            //}
-            //else
-            //{
-            //    btn_download.Enabled = false;
-            //}
+            if (e.IsSelected)
+            {
+                // 선택된 list가 폴더가 아닐 경우, 다운로드 버튼 활성화
+                if (lv_local.Items[selectRow].SubItems[2].Text != "폴더" &&
+                    lv_local.Items[selectRow].SubItems[2].Text != "드라이브")
+                {
+                    btn_upload.Enabled = true;
+                }
+                else
+                {
+                    btn_upload.Enabled = false;
+                }
+            }
+            else
+            {
+                btn_upload.Enabled = false;
+            }
+
         }
+
         /// <summary>
         /// 파일 Local > FTP 로 업로드
         /// </summary>
@@ -618,7 +653,6 @@ namespace FTPFileUpload
                 LogHelper.ExceptionWrite(ex);
             }
         }
-
 
         #endregion
 
@@ -702,16 +736,18 @@ namespace FTPFileUpload
                     FtpWebRequest ftpRequest = (FtpWebRequest)WebRequest.Create(this.RootFtpURL);
                     ftpRequest.KeepAlive = false;
 
-                    // 초기화
+                    // 입력값 초기화
                     ftp_path.Text = "";
                     local_path.Text = "";
 
+                    // 연결 주소 입력창 활성화
                     ftp_addr.Enabled = true;
                     ftp_port.Enabled = true;
                     ftp_id.Enabled = true;
                     ftp_password.Enabled = true;
                     ftp_remember.Enabled = true;
 
+                    // 파라미터 초기화
                     this.IsConnected = false;
                     this.IP = string.Empty;
                     this.Port = string.Empty;
@@ -722,8 +758,12 @@ namespace FTPFileUpload
                     this.RootLocalURL = string.Empty;
                     this.CurrentLocalURL = string.Empty;
 
+                    // 버튼 초기화
                     btn_connect.Text = "연결";
+                    btn_download.Enabled = false;
+                    btn_upload.Enabled = false;
 
+                    // 리스트뷰 초기화
                     lv_ftp.Items.Clear();
                     lv_local.Items.Clear();
 
@@ -739,5 +779,6 @@ namespace FTPFileUpload
             }
 
         }
+
     }
 }
