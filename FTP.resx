@@ -716,10 +716,13 @@
     <value>맑은 고딕, 9.75pt, style=Bold</value>
   </data>
   <data name="btn_upload.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 113</value>
+    <value>0, 110</value>
+  </data>
+  <data name="btn_upload.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="btn_upload.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 44</value>
+    <value>101, 50</value>
   </data>
   <data name="btn_upload.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -746,10 +749,13 @@
     <value>맑은 고딕, 9.75pt, style=Bold</value>
   </data>
   <data name="btn_download.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 163</value>
+    <value>0, 160</value>
+  </data>
+  <data name="btn_download.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="btn_download.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 44</value>
+    <value>101, 50</value>
   </data>
   <data name="btn_download.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -834,6 +840,9 @@
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>904, 561</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>FTP</value>

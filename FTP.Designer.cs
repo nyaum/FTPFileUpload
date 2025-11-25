@@ -97,6 +97,7 @@
             // 
             resources.ApplyResources(local_path, "local_path");
             local_path.Name = "local_path";
+            local_path.ReadOnly = true;
             // 
             // lv_local
             // 
@@ -196,6 +197,7 @@
             // 
             resources.ApplyResources(ftp_path, "ftp_path");
             ftp_path.Name = "ftp_path";
+            ftp_path.ReadOnly = true;
             // 
             // lv_ftp
             // 
