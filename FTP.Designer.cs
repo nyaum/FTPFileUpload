@@ -104,6 +104,7 @@
             lv_local.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3 });
             resources.ApplyResources(lv_local, "lv_local");
             lv_local.HeaderStyle = ColumnHeaderStyle.Nonclickable;
+            lv_local.MultiSelect = false;
             lv_local.Name = "lv_local";
             lv_local.UseCompatibleStateImageBehavior = false;
             lv_local.View = View.Details;
@@ -204,6 +205,7 @@
             lv_ftp.Columns.AddRange(new ColumnHeader[] { header_name, header_date, header_ext });
             resources.ApplyResources(lv_ftp, "lv_ftp");
             lv_ftp.HeaderStyle = ColumnHeaderStyle.Nonclickable;
+            lv_ftp.MultiSelect = false;
             lv_ftp.Name = "lv_ftp";
             lv_ftp.UseCompatibleStateImageBehavior = false;
             lv_ftp.View = View.Details;
