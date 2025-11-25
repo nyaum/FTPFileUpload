@@ -403,7 +403,11 @@ namespace FTPFileUpload
 
                 foreach (DriveInfo info in allDrive)
                 {
-                    rootdir.Add(info.Name.Substring(0, 2) + "||드라이브");
+                    if (info.DriveType == DriveType.Fixed)
+                    {
+                        rootdir.Add(info.Name.Substring(0, 2) + "||드라이브");
+                    }
+
                 }
 
                 initLocalListView(rootdir);
@@ -415,6 +419,14 @@ namespace FTPFileUpload
 
             foreach (System.IO.DirectoryInfo info in di.GetDirectories())
             {
+
+                if ((info.Attributes & FileAttributes.System) == FileAttributes.System ||
+                    (info.Attributes & FileAttributes.ReparsePoint) == FileAttributes.ReparsePoint)
+                {
+                    // 특수 폴더 >> 무시
+                    continue;
+                }
+
                 directories.Add(info.Name + "|" + info.CreationTime + "|" + "폴더");
             }
 
@@ -720,7 +732,10 @@ namespace FTPFileUpload
 
                     foreach (DriveInfo info in driveList)
                     {
-                        directories.Add(info.Name.Substring(0, 2) + "||드라이브");
+                        if (info.DriveType == DriveType.Fixed)
+                        {
+                            directories.Add(info.Name.Substring(0, 2) + "||드라이브");
+                        }
                     }
 
                     initLocalListView(directories);
