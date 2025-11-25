@@ -316,6 +316,7 @@ namespace FTPFileUpload
                 FtpWebRequest request = (FtpWebRequest)WebRequest.Create(this.CurrentFtpURL + fileName);
                 request.Method = WebRequestMethods.Ftp.DownloadFile;
                 request.Credentials = new NetworkCredential(this.ID, this.Password);
+                request.KeepAlive = false;
 
                 // TODO : 로컬 리스트뷰를 클릭 후, 그 위치에 넣을 수 있게 작업
                 //string dlLocation = $"C:\\Users\\iiroom\\Downloads\\";
@@ -329,6 +330,7 @@ namespace FTPFileUpload
                     FtpWebRequest sizeRequest = (FtpWebRequest)WebRequest.Create(this.CurrentFtpURL + fileName);
                     sizeRequest.Method = WebRequestMethods.Ftp.GetFileSize;
                     sizeRequest.Credentials = new NetworkCredential(this.ID, this.Password);
+                    sizeRequest.KeepAlive = false;
                     using (FtpWebResponse sizeResponse = (FtpWebResponse)sizeRequest.GetResponse())
                     {
                         totalLength = sizeResponse.ContentLength;
@@ -366,6 +368,7 @@ namespace FTPFileUpload
 
                 LogHelper.Write($"경로 {this.CurrentLocalURL}에 파일 다운로드 완료");
 
+                request.Abort();
                 // 다운로드 완료 후 리스트뷰를 다시 불러와야함
                 bool bRtn = ShowLocalDirectory(this.CurrentLocalURL);
 
@@ -735,6 +738,11 @@ namespace FTPFileUpload
 
                     FtpWebRequest ftpRequest = (FtpWebRequest)WebRequest.Create(this.RootFtpURL);
                     ftpRequest.KeepAlive = false;
+
+                    if(ftpRequest != null)
+                    {
+                        ftpRequest.Abort(); // 강제 종료
+                    }
 
                     // 입력값 초기화
                     ftp_path.Text = "";
