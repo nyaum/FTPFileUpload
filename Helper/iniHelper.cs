@@ -35,11 +35,14 @@ namespace FTPFileUpload.Helper
             string iniPath = Application.StartupPath + @"\config.ini";
 
             //저장하기
+
+            // [Connection]
             SetValue(iniPath, "Connection", "IP", q);
             SetValue(iniPath, "Connection", "Port", w);
             SetValue(iniPath, "Connection", "ID", e);
             SetValue(iniPath, "Connection", "Password", r);
             SetValue(iniPath, "Connection", "Remember", remember.ToString());
+
 
             return true;
         }
@@ -47,6 +50,14 @@ namespace FTPFileUpload.Helper
         public static List<string> GetIniData()
         {
             string iniPath = Application.StartupPath + @"\config.ini";
+
+            // ini 파일이 없으면 생성
+            if (!File.Exists(iniPath)) 
+            {
+
+                iniInit("", "", "", "", false);
+
+            }
 
             string pubData1 = GetValue(iniPath, "Connection", "IP", "");
             string pubData2 = GetValue(iniPath, "Connection", "Port", "");
