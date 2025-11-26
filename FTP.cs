@@ -58,45 +58,25 @@ namespace FTPFileUpload
         #region FTP Connection
 
         /// <summary>
-        /// FTP 서버 연결
+        /// FTP 연결할때 쓰는 그거
         /// </summary>
-        /// <param name="URL"></param>
-        /// <param name="ID"></param>
-        /// <param name="Password"></param>
+        /// <param name="url"></param>
+        /// <param name="method"></param>
         /// <returns></returns>
-        public FtpWebRequest ConnectToServer(string URL, string ID, string Password)
+        private FtpWebRequest CreateFtpRequest(string url, string method)
         {
+            var request = (FtpWebRequest)WebRequest.Create(url);
+            request.Method = method;
+            request.Credentials = new NetworkCredential(this.ID, this.Password);
+            request.KeepAlive = false;
 
-            //string URL = String.Format(@"ftp://{0}:{1}", this.IP, this.Port);
-
-            FtpWebRequest ftpRequest = (FtpWebRequest)WebRequest.Create(URL);
-
-            try
+            if (method.Equals("LIST"))
             {
-
-                ftpRequest.Credentials = new NetworkCredential(ID, Password);
-                ftpRequest.KeepAlive = false;
-                ftpRequest.Method = WebRequestMethods.Ftp.ListDirectoryDetails;
-                ftpRequest.UsePassive = false;
-
-                //this.CurrentPath = URL;
-                //ftp_path.Text = this.CurrentPath;
-
-                this.CurrentFtpURL = URL;
+                this.CurrentFtpURL = url;
                 ftp_path.Text = this.CurrentFtpURL;
-
-                return ftpRequest;
-
-            }
-            catch (Exception ex)
-            {
-
-                Console.WriteLine(ex.Message.ToString());
-
-                return ftpRequest;
-
             }
 
+            return request;
         }
 
         /// <summary>
@@ -248,11 +228,9 @@ namespace FTPFileUpload
 
             ftp_path.Text = this.CurrentFtpURL;
 
-            // ConnectToServer로 다시 연결?
+            var request = CreateFtpRequest(this.CurrentFtpURL, WebRequestMethods.Ftp.ListDirectoryDetails);
 
-            FtpWebRequest ftpRequest = ConnectToServer(this.CurrentFtpURL, this.ID, this.Password);
-
-            ShowFTPDirectory(ftpRequest);
+            ShowFTPDirectory(request);
 
         }
 
@@ -324,10 +302,7 @@ namespace FTPFileUpload
                 int selectRow = lv_ftp.SelectedItems[0].Index;
                 string fileName = lv_ftp.Items[selectRow].SubItems[0].Text;
 
-                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(this.CurrentFtpURL + fileName);
-                request.Method = WebRequestMethods.Ftp.DownloadFile;
-                request.Credentials = new NetworkCredential(this.ID, this.Password);
-                request.KeepAlive = false;
+                var request = CreateFtpRequest(this.CurrentFtpURL + fileName, WebRequestMethods.Ftp.DownloadFile);
 
                 // TODO : 로컬 리스트뷰를 클릭 후, 그 위치에 넣을 수 있게 작업
                 //string dlLocation = $"C:\\Users\\iiroom\\Downloads\\";
@@ -338,10 +313,8 @@ namespace FTPFileUpload
                 long totalLength = 0;
                 try
                 {
-                    FtpWebRequest sizeRequest = (FtpWebRequest)WebRequest.Create(this.CurrentFtpURL + fileName);
-                    sizeRequest.Method = WebRequestMethods.Ftp.GetFileSize;
-                    sizeRequest.Credentials = new NetworkCredential(this.ID, this.Password);
-                    sizeRequest.KeepAlive = false;
+                    var sizeRequest = CreateFtpRequest(this.CurrentFtpURL + fileName, WebRequestMethods.Ftp.GetFileSize);
+
                     using (FtpWebResponse sizeResponse = (FtpWebResponse)sizeRequest.GetResponse())
                     {
                         totalLength = sizeResponse.ContentLength;
@@ -509,22 +482,6 @@ namespace FTPFileUpload
                 LogHelper.ExceptionWrite(ex);
             }
         }
-        
-        /// <summary>
-        /// FTP 연결할때 쓰는 그거
-        /// </summary>
-        /// <param name="url"></param>
-        /// <param name="method"></param>
-        /// <returns></returns>
-        private FtpWebRequest CreateFtpRequest(string url, string method)
-        {
-            var request = (FtpWebRequest)WebRequest.Create(url);
-            request.Method = method;
-            request.Credentials = new NetworkCredential(this.ID, this.Password);
-            request.KeepAlive = false;
-            return request;
-        }
-
 
         private void EditFtpFileName()
         {
@@ -777,10 +734,7 @@ namespace FTPFileUpload
 
                 string uniqueFileName = UtilityHelper.GetAvailableFtpFilename(this.CurrentFtpURL, fileName, this.ID, this.Password);
 
-                //FtpWebRequest request = (FtpWebRequest)WebRequest.Create(this.CurrentFtpURL + fileName);
-                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(this.CurrentFtpURL + uniqueFileName);
-                request.Method = WebRequestMethods.Ftp.UploadFile;
-                request.Credentials = new NetworkCredential(this.ID, this.Password);
+                var request = CreateFtpRequest(this.CurrentFtpURL + uniqueFileName, WebRequestMethods.Ftp.UploadFile);
 
                 // 전체 파일 크기 (진행률 계산용)
                 long totalLength = new FileInfo(this.CurrentLocalURL + fileName).Length;
@@ -847,9 +801,9 @@ namespace FTPFileUpload
 
                     LogHelper.Write($"{this.RootFtpURL} 에 연결 중 ... ");
 
-                    FtpWebRequest ftpRequest = ConnectToServer(this.CurrentFtpURL, this.ID, this.Password);
+                    var request = CreateFtpRequest(this.CurrentFtpURL, WebRequestMethods.Ftp.ListDirectoryDetails);
 
-                    bool bRtn = ShowFTPDirectory(ftpRequest);
+                    bool bRtn = ShowFTPDirectory(request);
 
                     if (bRtn)
                     {
