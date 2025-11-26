@@ -125,6 +125,9 @@
             // 
             // ftp_port
             // 
+            ftp_port.BorderActive = SystemColors.WindowText;
+            ftp_port.BorderColor = SystemColors.WindowFrame;
+            ftp_port.BorderHover = SystemColors.WindowFrame;
             resources.ApplyResources(ftp_port, "ftp_port");
             ftp_port.Name = "ftp_port";
             // 
@@ -148,22 +151,34 @@
             // 
             // ftp_addr
             // 
+            ftp_addr.BorderActive = SystemColors.WindowText;
+            ftp_addr.BorderColor = SystemColors.WindowFrame;
+            ftp_addr.BorderHover = SystemColors.WindowFrame;
             resources.ApplyResources(ftp_addr, "ftp_addr");
             ftp_addr.Name = "ftp_addr";
             // 
             // ftp_id
             // 
+            ftp_id.BorderActive = SystemColors.WindowText;
+            ftp_id.BorderColor = SystemColors.WindowFrame;
+            ftp_id.BorderHover = SystemColors.WindowFrame;
             resources.ApplyResources(ftp_id, "ftp_id");
             ftp_id.Name = "ftp_id";
             // 
             // ftp_password
             // 
+            ftp_password.BorderActive = SystemColors.WindowText;
+            ftp_password.BorderColor = SystemColors.WindowFrame;
+            ftp_password.BorderHover = SystemColors.WindowFrame;
             resources.ApplyResources(ftp_password, "ftp_password");
             ftp_password.Name = "ftp_password";
             ftp_password.PasswordChar = '●';
             // 
             // btn_connect
             // 
+            btn_connect.BackHover = SystemColors.WindowFrame;
+            btn_connect.BorderWidth = 1F;
+            btn_connect.DefaultBack = Color.WhiteSmoke;
             resources.ApplyResources(btn_connect, "btn_connect");
             btn_connect.Name = "btn_connect";
             btn_connect.Click += btn_connect_Click;
@@ -266,7 +281,9 @@
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             Controls.Add(tableLayoutPanel1);
+            ForeColor = Color.Transparent;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "FTP";
             tableLayoutPanel1.ResumeLayout(false);

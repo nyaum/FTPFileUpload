@@ -30,6 +30,7 @@ namespace FTPFileUpload
         private string Port = string.Empty;
         private string ID = string.Empty;
         private string Password = string.Empty;
+
         private string RootFtpURL = string.Empty;
         private string CurrentFtpURL = string.Empty;
 
@@ -84,7 +85,7 @@ namespace FTPFileUpload
         /// </summary>
         /// <param name="ftpRequest"></param>
         /// <returns></returns>
-        public bool ShowFTPDirectory(FtpWebRequest ftpRequest)
+        private bool ShowFTPDirectory(FtpWebRequest ftpRequest)
         {
 
             LogHelper.Write("FTP 디렉토리 불러오는 중 ...");
@@ -118,7 +119,7 @@ namespace FTPFileUpload
         /// FTP 서버 디렉토리 리스트뷰로 출력
         /// </summary>
         /// <param name="directories"></param>
-        public void initFTPListView(List<string> directories)
+        private void initFTPListView(List<string> directories)
         {
 
             try
@@ -497,7 +498,7 @@ namespace FTPFileUpload
         /// </summary>
         /// <param name="FolderName"></param>
         /// <returns></returns>
-        public bool ShowLocalDirectory(string FolderName)
+        private bool ShowLocalDirectory(string FolderName)
         {
             LogHelper.Write("로컬 디렉토리 불러오는 중 ...");
 
@@ -567,7 +568,7 @@ namespace FTPFileUpload
         /// Local 서버 디렉토리 리스트뷰로 출력
         /// </summary>
         /// <param name="directories"></param>
-        public void initLocalListView(List<string> directories)
+        private void initLocalListView(List<string> directories)
         {
             try
             {
