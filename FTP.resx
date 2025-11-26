@@ -130,10 +130,14 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="local_path.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+    <value>4, 4</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="local_path.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="local_path.Size" type="System.Drawing.Size, System.Drawing">
-    <value>380, 39</value>
+    <value>489, 52</value>
   </data>
   <data name="local_path.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -172,14 +176,13 @@
     <value>Fill</value>
   </data>
   <data name="lv_local.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 51</value>
+    <value>8, 68</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="lv_local.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>8, 8, 8, 8</value>
   </data>
   <data name="lv_local.Size" type="System.Drawing.Size, System.Drawing">
-    <value>374, 269</value>
+    <value>481, 358</value>
   </data>
   <data name="lv_local.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -200,7 +203,7 @@
     <value>Fill</value>
   </data>
   <data name="tableLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 100</value>
+    <value>0, 134</value>
   </data>
   <data name="tableLayoutPanel4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -209,7 +212,7 @@
     <value>2</value>
   </data>
   <data name="tableLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>386, 326</value>
+    <value>497, 434</value>
   </data>
   <data name="tableLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -227,16 +230,19 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanel4.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="local_path" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="lv_local" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="Absolute,45,Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="local_path" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="lv_local" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="Absolute,60,Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="ftp_port.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
   <data name="ftp_port.Location" type="System.Drawing.Point, System.Drawing">
-    <value>496, 3</value>
+    <value>639, 4</value>
+  </data>
+  <data name="ftp_port.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="ftp_port.Size" type="System.Drawing.Size, System.Drawing">
-    <value>273, 39</value>
+    <value>351, 52</value>
   </data>
   <data name="ftp_port.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -260,10 +266,13 @@
     <value>맑은 고딕, 9.75pt, style=Bold</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+    <value>4, 4</value>
+  </data>
+  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 39</value>
+    <value>130, 52</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -290,10 +299,13 @@
     <value>맑은 고딕, 9.75pt, style=Bold</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>389, 3</value>
+    <value>501, 4</value>
+  </data>
+  <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 39</value>
+    <value>130, 52</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -320,10 +332,13 @@
     <value>맑은 고딕, 9.75pt, style=Bold</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>389, 48</value>
+    <value>501, 64</value>
+  </data>
+  <data name="label4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 39</value>
+    <value>130, 52</value>
   </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -347,10 +362,13 @@
     <value>Fill</value>
   </data>
   <data name="ftp_addr.Location" type="System.Drawing.Point, System.Drawing">
-    <value>110, 3</value>
+    <value>142, 4</value>
+  </data>
+  <data name="ftp_addr.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="ftp_addr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>273, 39</value>
+    <value>351, 52</value>
   </data>
   <data name="ftp_addr.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -371,10 +389,13 @@
     <value>Fill</value>
   </data>
   <data name="ftp_id.Location" type="System.Drawing.Point, System.Drawing">
-    <value>110, 48</value>
+    <value>142, 64</value>
+  </data>
+  <data name="ftp_id.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="ftp_id.Size" type="System.Drawing.Size, System.Drawing">
-    <value>273, 39</value>
+    <value>351, 52</value>
   </data>
   <data name="ftp_id.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -395,10 +416,13 @@
     <value>Fill</value>
   </data>
   <data name="ftp_password.Location" type="System.Drawing.Point, System.Drawing">
-    <value>496, 48</value>
+    <value>639, 64</value>
+  </data>
+  <data name="ftp_password.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="ftp_password.Size" type="System.Drawing.Size, System.Drawing">
-    <value>273, 39</value>
+    <value>351, 52</value>
   </data>
   <data name="ftp_password.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -422,10 +446,13 @@
     <value>맑은 고딕, 9.75pt, style=Bold</value>
   </data>
   <data name="btn_connect.Location" type="System.Drawing.Point, System.Drawing">
-    <value>775, 3</value>
+    <value>998, 4</value>
+  </data>
+  <data name="btn_connect.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="btn_connect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 39</value>
+    <value>160, 52</value>
   </data>
   <data name="btn_connect.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -452,10 +479,13 @@
     <value>맑은 고딕, 9.75pt, style=Bold</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 48</value>
+    <value>4, 64</value>
+  </data>
+  <data name="label3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 39</value>
+    <value>130, 52</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -482,13 +512,13 @@
     <value>맑은 고딕, 9.75pt</value>
   </data>
   <data name="ftp_remember.Location" type="System.Drawing.Point, System.Drawing">
-    <value>802, 48</value>
+    <value>1033, 64</value>
   </data>
   <data name="ftp_remember.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>30, 3, 3, 3</value>
+    <value>39, 4, 4, 4</value>
   </data>
   <data name="ftp_remember.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 39</value>
+    <value>125, 52</value>
   </data>
   <data name="ftp_remember.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -512,10 +542,13 @@
     <value>Fill</value>
   </data>
   <data name="divider1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 93</value>
+    <value>4, 124</value>
+  </data>
+  <data name="divider1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="divider1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>898, 4</value>
+    <value>1154, 6</value>
   </data>
   <data name="divider1.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -542,10 +575,13 @@
     <value>Fill</value>
   </data>
   <data name="ftp_path.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+    <value>4, 4</value>
+  </data>
+  <data name="ftp_path.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="ftp_path.Size" type="System.Drawing.Size, System.Drawing">
-    <value>405, 39</value>
+    <value>519, 52</value>
   </data>
   <data name="ftp_path.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -584,13 +620,13 @@
     <value>Fill</value>
   </data>
   <data name="lv_ftp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 51</value>
+    <value>8, 68</value>
   </data>
   <data name="lv_ftp.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>8, 8, 8, 8</value>
   </data>
   <data name="lv_ftp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>399, 269</value>
+    <value>511, 358</value>
   </data>
   <data name="lv_ftp.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -611,7 +647,7 @@
     <value>Fill</value>
   </data>
   <data name="tableLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>493, 100</value>
+    <value>635, 134</value>
   </data>
   <data name="tableLayoutPanel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -620,7 +656,7 @@
     <value>2</value>
   </data>
   <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>411, 326</value>
+    <value>527, 434</value>
   </data>
   <data name="tableLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -638,7 +674,7 @@
     <value>12</value>
   </data>
   <data name="tableLayoutPanel2.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="ftp_path" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="lv_ftp" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="Absolute,45,Percent,100,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="ftp_path" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="lv_ftp" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="Absolute,60,Percent,100,Absolute,26" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tableLayoutPanel3.ColumnCount" type="System.Int32, mscorlib">
     <value>1</value>
@@ -650,13 +686,16 @@
     <value>맑은 고딕, 9.75pt</value>
   </data>
   <data name="lst_log.ItemHeight" type="System.Int32, mscorlib">
-    <value>17</value>
+    <value>21</value>
   </data>
   <data name="lst_log.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+    <value>4, 4</value>
+  </data>
+  <data name="lst_log.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="lst_log.Size" type="System.Drawing.Size, System.Drawing">
-    <value>892, 123</value>
+    <value>1146, 164</value>
   </data>
   <data name="lst_log.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -677,13 +716,16 @@
     <value>Fill</value>
   </data>
   <data name="tableLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 429</value>
+    <value>4, 572</value>
+  </data>
+  <data name="tableLayoutPanel3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="tableLayoutPanel3.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="tableLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>898, 129</value>
+    <value>1154, 172</value>
   </data>
   <data name="tableLayoutPanel3.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -706,59 +748,23 @@
   <data name="tableLayoutPanel5.ColumnCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="btn_upload.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="btn_upload.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="btn_upload.Font" type="System.Drawing.Font, System.Drawing">
-    <value>맑은 고딕, 9.75pt, style=Bold</value>
-  </data>
-  <data name="btn_upload.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 110</value>
-  </data>
-  <data name="btn_upload.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="btn_upload.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 50</value>
-  </data>
-  <data name="btn_upload.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;btn_upload.Name" xml:space="preserve">
-    <value>btn_upload</value>
-  </data>
-  <data name="&gt;&gt;btn_upload.Type" xml:space="preserve">
-    <value>AntdUI.Button, AntdUI, Culture=neutral, PublicKeyToken=0e24e5118ea3d6af</value>
-  </data>
-  <data name="&gt;&gt;btn_upload.Parent" xml:space="preserve">
-    <value>tableLayoutPanel5</value>
-  </data>
-  <data name="&gt;&gt;btn_upload.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="btn_download.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
   <data name="btn_download.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="btn_download.Font" type="System.Drawing.Font, System.Drawing">
-    <value>맑은 고딕, 9.75pt, style=Bold</value>
-  </data>
   <data name="btn_download.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 160</value>
+    <value>3, 215</value>
   </data>
   <data name="btn_download.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="btn_download.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 50</value>
+    <value>124, 62</value>
   </data>
   <data name="btn_download.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;btn_download.Name" xml:space="preserve">
     <value>btn_download</value>
@@ -770,19 +776,52 @@
     <value>tableLayoutPanel5</value>
   </data>
   <data name="&gt;&gt;btn_download.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btn_upload.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="btn_upload.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btn_upload.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 149</value>
+  </data>
+  <data name="btn_upload.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
+  </data>
+  <data name="btn_upload.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 62</value>
+  </data>
+  <data name="btn_upload.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;btn_upload.Name" xml:space="preserve">
+    <value>btn_upload</value>
+  </data>
+  <data name="&gt;&gt;btn_upload.Type" xml:space="preserve">
+    <value>AntdUI.Button, AntdUI, Culture=neutral, PublicKeyToken=0e24e5118ea3d6af</value>
+  </data>
+  <data name="&gt;&gt;btn_upload.Parent" xml:space="preserve">
+    <value>tableLayoutPanel5</value>
+  </data>
+  <data name="&gt;&gt;btn_upload.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="tableLayoutPanel5.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
   <data name="tableLayoutPanel5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>389, 103</value>
+    <value>501, 138</value>
+  </data>
+  <data name="tableLayoutPanel5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="tableLayoutPanel5.RowCount" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
   <data name="tableLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 320</value>
+    <value>130, 426</value>
   </data>
   <data name="tableLayoutPanel5.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -800,7 +839,7 @@
     <value>14</value>
   </data>
   <data name="tableLayoutPanel5.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="btn_upload" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="btn_download" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="Percent,50,Absolute,50,Absolute,50,Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="btn_download" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="btn_upload" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="Percent,50,Absolute,66,Absolute,66,Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -808,11 +847,14 @@
   <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
+  <data name="tableLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
   <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>904, 561</value>
+    <value>1162, 748</value>
   </data>
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -830,16 +872,19 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="tableLayoutPanel4" Row="3" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="ftp_port" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="label1" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label2" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label4" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="ftp_addr" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="ftp_id" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="ftp_password" Row="1" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="btn_connect" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="label3" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="ftp_remember" Row="1" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="divider1" Row="2" RowSpan="1" Column="0" ColumnSpan="5" /&gt;&lt;Control Name="tableLayoutPanel2" Row="3" RowSpan="1" Column="3" ColumnSpan="2" /&gt;&lt;Control Name="tableLayoutPanel3" Row="4" RowSpan="1" Column="0" ColumnSpan="5" /&gt;&lt;Control Name="tableLayoutPanel5" Row="3" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,11.90476,Percent,30.952383,Percent,11.904763,Percent,30.952383,Percent,14.285715" /&gt;&lt;Rows Styles="Absolute,45,Absolute,45,Absolute,10,Percent,100,Absolute,135" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="tableLayoutPanel4" Row="3" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="ftp_port" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="label1" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label2" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label4" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="ftp_addr" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="ftp_id" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="ftp_password" Row="1" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="btn_connect" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="label3" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="ftp_remember" Row="1" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="divider1" Row="2" RowSpan="1" Column="0" ColumnSpan="5" /&gt;&lt;Control Name="tableLayoutPanel2" Row="3" RowSpan="1" Column="3" ColumnSpan="2" /&gt;&lt;Control Name="tableLayoutPanel3" Row="4" RowSpan="1" Column="0" ColumnSpan="5" /&gt;&lt;Control Name="tableLayoutPanel5" Row="3" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,11.90476,Percent,30.952383,Percent,11.904763,Percent,30.952383,Percent,14.285715" /&gt;&lt;Rows Styles="Absolute,60,Absolute,60,Absolute,14,Percent,100,Absolute,180" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>7, 15</value>
+    <value>9, 20</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>904, 561</value>
+    <value>1162, 748</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>

@@ -56,8 +56,8 @@
             tableLayoutPanel3 = new TableLayoutPanel();
             lst_log = new ListBox();
             tableLayoutPanel5 = new TableLayoutPanel();
-            btn_upload = new AntdUI.Button();
             btn_download = new AntdUI.Button();
+            btn_upload = new AntdUI.Button();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -211,6 +211,7 @@
             lv_ftp.View = View.Details;
             lv_ftp.ItemSelectionChanged += lv_ftp_ItemSelectionChanged;
             lv_ftp.DoubleClick += lv_ftp_DoubleClick;
+            lv_ftp.MouseClick += lv_ftp_MouseClick;
             // 
             // header_name
             // 
@@ -241,26 +242,25 @@
             // tableLayoutPanel5
             // 
             resources.ApplyResources(tableLayoutPanel5, "tableLayoutPanel5");
-            tableLayoutPanel5.Controls.Add(btn_upload, 0, 1);
             tableLayoutPanel5.Controls.Add(btn_download, 0, 2);
+            tableLayoutPanel5.Controls.Add(btn_upload, 0, 1);
             tableLayoutPanel5.Name = "tableLayoutPanel5";
-            // 
-            // btn_upload
-            // 
-            resources.ApplyResources(btn_upload, "btn_upload");
-            btn_upload.Icon = Properties.Resources.step_forward;
-            btn_upload.IconSize = new Size(20, 20);
-            btn_upload.IconSvg = "";
-            btn_upload.Name = "btn_upload";
-            btn_upload.Click += btn_upload_Click;
             // 
             // btn_download
             // 
             resources.ApplyResources(btn_download, "btn_download");
-            btn_download.Icon = Properties.Resources.step_back;
-            btn_download.IconSize = new Size(20, 20);
+            btn_download.IconSize = new Size(16, 16);
+            btn_download.IconSvg = Resources.Svg.chevron_double_left;
             btn_download.Name = "btn_download";
             btn_download.Click += btn_download_Click;
+            // 
+            // btn_upload
+            // 
+            resources.ApplyResources(btn_upload, "btn_upload");
+            btn_upload.IconSize = new Size(16, 16);
+            btn_upload.IconSvg = Resources.Svg.chevron_double_right;
+            btn_upload.Name = "btn_upload";
+            btn_upload.Click += btn_upload_Click;
             // 
             // FTP
             // 
@@ -306,7 +306,7 @@
         public ListBox lst_log;
         private ListView lv_ftp;
         private TableLayoutPanel tableLayoutPanel5;
-        private AntdUI.Button btn_upload;
         private AntdUI.Button btn_download;
+        private AntdUI.Button btn_upload;
     }
 }

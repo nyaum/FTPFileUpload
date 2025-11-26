@@ -1,8 +1,14 @@
-﻿using FTPFileUpload.Helper;
+﻿using AntdUI;
+using AntdUI.Svg;
+using ExCSS;
+using FTPFileUpload.Helper;
+using FTPFileUpload.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
+using System.Drawing;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
@@ -259,6 +265,11 @@ namespace FTPFileUpload
         {
             //int selectRow = lv_ftp.SelectedItems[0].Index;
             int selectRow = e.Item.Index;
+
+            if (selectRow == -1)
+            {
+                return;
+            }
 
             string URL = "";
 
@@ -754,7 +765,7 @@ namespace FTPFileUpload
                     FtpWebRequest ftpRequest = (FtpWebRequest)WebRequest.Create(this.RootFtpURL);
                     ftpRequest.KeepAlive = false;
 
-                    if(ftpRequest != null)
+                    if (ftpRequest != null)
                     {
                         ftpRequest.Abort(); // 강제 종료
                     }
@@ -783,8 +794,8 @@ namespace FTPFileUpload
 
                     // 버튼 초기화
                     btn_connect.Text = "연결";
-                    btn_download.Enabled = false;
                     btn_upload.Enabled = false;
+                    btn_download.Enabled = false;
 
                     // 리스트뷰 초기화
                     lv_ftp.Items.Clear();
@@ -803,5 +814,156 @@ namespace FTPFileUpload
 
         }
 
+        private void lv_ftp_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                var menulist = new AntdUI.IContextMenuStripItem[]
+                {
+                    new AntdUI.ContextMenuStripItem("이름 변경", "New Name")
+                    {
+                        IconSvg = Resources.Svg.pencil_square,
+                        ID = "E"
+                    },
+                    new AntdUI.ContextMenuStripItem("파일 삭제", "Delete")
+                    {
+                        IconSvg = Resources.Svg.document_minus,
+                        ID = "D"
+                    },
+
+                };
+                AntdUI.ContextMenuStrip.open(this, it =>
+                {
+                    
+                    switch (it.ID)
+                    {
+                        case "E":
+                            // 파일 이름 변경 함수
+
+                            EditFtpFileName();
+
+                            break;
+                        case "D":
+                            // 파일 삭제 함수
+
+                            DeleteFtpFileName();
+
+                            break;
+                    }
+
+                    // 처리 완료 후 리스트뷰를 다시 불러와야함(ftp)
+                    FtpWebRequest request = (FtpWebRequest)WebRequest.Create(this.CurrentFtpURL);
+                    request.Method = WebRequestMethods.Ftp.ListDirectoryDetails;
+                    request.Credentials = new NetworkCredential(this.ID, this.Password);
+                    bool bRtn = ShowFTPDirectory(request);
+
+                    btn_download.Enabled = false;
+
+                }, menulist);
+            }
+        }
+
+        private void DeleteFtpFileName(string url = "")
+        {
+            var i = lv_ftp.SelectedItems[0].Index;
+
+            //var delFilePath = this.CurrentFtpURL + lv_ftp.Items[i].Text;
+
+            if (url == "")
+            {
+                url = this.CurrentFtpURL + lv_ftp.Items[i].Text;
+            }
+
+            // 상위 디렉토리 우클릭일 경우 처리하지 않음
+            if (lv_ftp.Items[i].Name == "lvi_up")
+            {
+                return;
+            }
+
+            try
+            {
+
+                //LogHelper.Write($"{lv_ftp.Items[i].Text} 파일 삭제 중 ...");
+                LogHelper.Write($"{url} 경로 파일 삭제 중 ...");
+
+                var listRequest = (FtpWebRequest)WebRequest.Create(url);
+                listRequest.Method = WebRequestMethods.Ftp.ListDirectoryDetails;
+                listRequest.Credentials = new NetworkCredential(this.ID, this.Password);
+
+                List<string> lines = new List<string>();
+
+                using (var listResponse = (FtpWebResponse)listRequest.GetResponse())
+                using (Stream listStream = listResponse.GetResponseStream())
+                using (var listReader = new StreamReader(listStream))
+                {
+                    while (!listReader.EndOfStream)
+                    {
+                        lines.Add(listReader.ReadLine());
+                    }
+                }
+
+                foreach (string line in lines)
+                {
+                    string[] tokens =
+                        line.Split(new[] { ' ' }, 9, StringSplitOptions.RemoveEmptyEntries);
+                    string name = string.Join(" ", tokens.Skip(3));
+                    string permissions = tokens[2];
+
+                    string fileUrl = url + "/" + name;
+
+                    if (permissions.ToString() == "<DIR>")
+                    {
+                        DeleteFtpFileName(fileUrl);
+                    }
+                    else
+                    {
+                        var deleteRequest = (FtpWebRequest)WebRequest.Create(fileUrl);
+                        deleteRequest.Method = WebRequestMethods.Ftp.DeleteFile;
+                        deleteRequest.Credentials = new NetworkCredential(this.ID, this.Password);
+
+                        deleteRequest.GetResponse();
+
+                        LogHelper.Write($"{fileUrl} 경로 파일 삭제 완료");
+
+                    }
+
+                }
+
+                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(url);
+
+                request.Method = WebRequestMethods.Ftp.RemoveDirectory;
+                request.Credentials = new NetworkCredential(this.ID, this.Password);
+                request.KeepAlive = false;
+
+                request.GetResponse();
+
+                LogHelper.Write($"{url} 경로 파일 삭제 완료");
+
+                //using (FtpWebResponse response = (FtpWebResponse)request.GetResponse())
+                //{
+                //    //lv_ftp.Items[i].Remove();
+
+                //    LogHelper.Write($"{lv_ftp.Items[i].Text} 파일 삭제 완료");
+
+                //    // 다운로드 완료 후 리스트뷰를 다시 불러와야함(ftp)
+                //    request = (FtpWebRequest)WebRequest.Create(this.CurrentFtpURL);
+                //    request.Method = WebRequestMethods.Ftp.ListDirectoryDetails;
+                //    request.Credentials = new NetworkCredential(this.ID, this.Password);
+                //    bool bRtn = ShowFTPDirectory(request);
+
+                //    btn_download.Enabled = false;
+                //}
+
+            }
+            catch (Exception ex) 
+            {
+                LogHelper.ExceptionWrite(ex);
+            }
+        }
+
+        private void EditFtpFileName()
+        {
+            
+        }
     }
 }
