@@ -252,7 +252,7 @@ namespace FTPFileUpload
 
             FtpWebRequest ftpRequest = ConnectToServer(this.CurrentFtpURL, this.ID, this.Password);
 
-            bool bRtn = ShowFTPDirectory(ftpRequest);
+            ShowFTPDirectory(ftpRequest);
 
         }
 
@@ -668,10 +668,9 @@ namespace FTPFileUpload
                 }
 
                 // 다운로드 완료 후 리스트뷰를 다시 불러와야함(ftp)
-                request = (FtpWebRequest)WebRequest.Create(this.CurrentFtpURL);
-                request.Method = WebRequestMethods.Ftp.ListDirectoryDetails;
-                request.Credentials = new NetworkCredential(this.ID, this.Password);
-                bool bRtn = ShowFTPDirectory(request);
+                var reloadRequest = CreateFtpRequest(this.CurrentFtpURL, WebRequestMethods.Ftp.ListDirectoryDetails);
+
+                ShowFTPDirectory(reloadRequest);
 
             }
             catch (Exception ex)
@@ -852,10 +851,10 @@ namespace FTPFileUpload
                     }
 
                     // 처리 완료 후 리스트뷰를 다시 불러와야함(ftp)
-                    FtpWebRequest request = (FtpWebRequest)WebRequest.Create(this.CurrentFtpURL);
-                    request.Method = WebRequestMethods.Ftp.ListDirectoryDetails;
-                    request.Credentials = new NetworkCredential(this.ID, this.Password);
-                    bool bRtn = ShowFTPDirectory(request);
+
+                    var request = CreateFtpRequest(this.CurrentFtpURL, WebRequestMethods.Ftp.ListDirectoryDetails);
+
+                    ShowFTPDirectory(request);
 
                     btn_download.Enabled = false;
 
@@ -865,35 +864,26 @@ namespace FTPFileUpload
 
         private void DeleteFtpFileName(string url = "")
         {
-            var i = lv_ftp.SelectedItems[0].Index;
+            int i = lv_ftp.SelectedItems[0].Index;
 
-            //var delFilePath = this.CurrentFtpURL + lv_ftp.Items[i].Text;
-
-            if (url == "")
+            if (string.IsNullOrEmpty(url))
             {
-                url = this.CurrentFtpURL + lv_ftp.Items[i].Text;
+                url = $"{this.CurrentFtpURL}{lv_ftp.Items[i].Text}";
             }
 
-            // 상위 디렉토리 우클릭일 경우 처리하지 않음
+            // 상위 디렉토리 클릭 시 무시
             if (lv_ftp.Items[i].Name == "lvi_up")
-            {
                 return;
-            }
 
             try
             {
-
-                //LogHelper.Write($"{lv_ftp.Items[i].Text} 파일 삭제 중 ...");
                 LogHelper.Write($"{url} 경로 파일 삭제 중 ...");
 
-                var listRequest = (FtpWebRequest)WebRequest.Create(url);
-                listRequest.Method = WebRequestMethods.Ftp.ListDirectoryDetails;
-                listRequest.Credentials = new NetworkCredential(this.ID, this.Password);
+                var listRequest = CreateFtpRequest(url, WebRequestMethods.Ftp.ListDirectoryDetails);
 
                 List<string> lines = new List<string>();
-
                 using (var listResponse = (FtpWebResponse)listRequest.GetResponse())
-                using (Stream listStream = listResponse.GetResponseStream())
+                using (var listStream = listResponse.GetResponseStream())
                 using (var listReader = new StreamReader(listStream))
                 {
                     while (!listReader.EndOfStream)
@@ -904,62 +894,45 @@ namespace FTPFileUpload
 
                 foreach (string line in lines)
                 {
-                    string[] tokens =
-                        line.Split(new[] { ' ' }, 9, StringSplitOptions.RemoveEmptyEntries);
-                    string name = string.Join(" ", tokens.Skip(3));
-                    string permissions = tokens[2];
+                    string[] arr = line.Split(new[] { ' ' }, 9, StringSplitOptions.RemoveEmptyEntries);
+                    string name = string.Join(" ", arr.Skip(3));
+                    string ext = arr[2];
 
-                    string fileUrl = url + "/" + name;
+                    string fileUrl = $"{url}/{name}";
 
-                    if (permissions.ToString() == "<DIR>")
+                    if (ext.Equals("<DIR>", StringComparison.OrdinalIgnoreCase))
                     {
                         DeleteFtpFileName(fileUrl);
                     }
                     else
                     {
-                        var deleteRequest = (FtpWebRequest)WebRequest.Create(fileUrl);
-                        deleteRequest.Method = WebRequestMethods.Ftp.DeleteFile;
-                        deleteRequest.Credentials = new NetworkCredential(this.ID, this.Password);
-
-                        deleteRequest.GetResponse();
-
-                        LogHelper.Write($"{fileUrl} 경로 파일 삭제 완료");
-
+                        using (var deleteResponse = (FtpWebResponse)CreateFtpRequest(fileUrl, WebRequestMethods.Ftp.DeleteFile).GetResponse())
+                        {
+                            LogHelper.Write($"{fileUrl} 파일 삭제 완료");
+                        }
                     }
-
                 }
 
-                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(url);
-
-                request.Method = WebRequestMethods.Ftp.RemoveDirectory;
-                request.Credentials = new NetworkCredential(this.ID, this.Password);
-                request.KeepAlive = false;
-
-                request.GetResponse();
-
-                LogHelper.Write($"{url} 경로 파일 삭제 완료");
-
-                //using (FtpWebResponse response = (FtpWebResponse)request.GetResponse())
-                //{
-                //    //lv_ftp.Items[i].Remove();
-
-                //    LogHelper.Write($"{lv_ftp.Items[i].Text} 파일 삭제 완료");
-
-                //    // 다운로드 완료 후 리스트뷰를 다시 불러와야함(ftp)
-                //    request = (FtpWebRequest)WebRequest.Create(this.CurrentFtpURL);
-                //    request.Method = WebRequestMethods.Ftp.ListDirectoryDetails;
-                //    request.Credentials = new NetworkCredential(this.ID, this.Password);
-                //    bool bRtn = ShowFTPDirectory(request);
-
-                //    btn_download.Enabled = false;
-                //}
-
+                using (var removeResponse = (FtpWebResponse)CreateFtpRequest(url, WebRequestMethods.Ftp.RemoveDirectory).GetResponse())
+                {
+                    LogHelper.Write($"{url} 디렉토리 삭제 완료");
+                }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 LogHelper.ExceptionWrite(ex);
             }
         }
+
+        private FtpWebRequest CreateFtpRequest(string url, string method)
+        {
+            var request = (FtpWebRequest)WebRequest.Create(url);
+            request.Method = method;
+            request.Credentials = new NetworkCredential(this.ID, this.Password);
+            request.KeepAlive = false;
+            return request;
+        }
+
 
         private void EditFtpFileName()
         {
